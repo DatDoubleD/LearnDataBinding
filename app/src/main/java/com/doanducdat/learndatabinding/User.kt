@@ -1,3 +1,3 @@
 package com.doanducdat.learndatabinding
 
-data class User(var userName: String, var age: Int)
+data class User(var userName: String, var age: Int, var like:Int)

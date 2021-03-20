@@ -5,17 +5,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.doanducdat.learndatabinding.databinding.UserItemBinding
 
-class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+class UserAdapter() :
+    RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     inner class UserViewHolder(private val userItemBinding: UserItemBinding) :
         RecyclerView.ViewHolder(userItemBinding.root) {
 
         fun onBind(user: User) {
             userItemBinding.user = user
+            userItemBinding.imgClick.setOnClickListener {
+                user.like += 1
+                userItemBinding.txtNumberLike.text = user.like.toString()
+            }
         }
     }
 
-    var userList: List<User> = listOf()
+    var userList: MutableList<User> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
