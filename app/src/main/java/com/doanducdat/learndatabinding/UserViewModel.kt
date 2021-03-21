@@ -23,4 +23,9 @@ class UserViewModel : ViewModel() {
     fun getUserList(): LiveData<MutableList<User>> {
         return userList
     }
+    //update k auto update UP, phai scroll len + xuong cho item update lai moi co su thay doi
+   /* fun updateCountLike(position: Int) {
+
+        userList.value?.get(position)?.like = userList.value?.get(position)?.like?.plus(1) ?: 0
+    }*/
 }

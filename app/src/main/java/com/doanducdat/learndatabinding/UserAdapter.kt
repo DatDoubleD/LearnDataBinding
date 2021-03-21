@@ -5,8 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.doanducdat.learndatabinding.databinding.UserItemBinding
 
-class UserAdapter(private val onClick: onClick) :
+class UserAdapter() :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+    lateinit var onClick: onClick
 
     inner class UserViewHolder(private val userItemBinding: UserItemBinding) :
         RecyclerView.ViewHolder(userItemBinding.root) {
@@ -14,7 +15,9 @@ class UserAdapter(private val onClick: onClick) :
         fun onBind(user: User, position: Int) {
             userItemBinding.user = user
             userItemBinding.imgClick.setOnClickListener {
-                onClick.onItemClick(user, position)
+                user.like += 1 //update user giong update = funtion trong viewmodel -> k update UI
+                userItemBinding.txtNumberLike.text = user.like.toString()
+                /*onClick.onItemClick(user, position)*/
             }
         }
     }
